@@ -118,17 +118,3 @@ def get_products(text):
 		return_array.append(temp)
 	return return_array
 
-tag = input("O que deseja procurar?")
-print()
-
-path = "pathtest/teste.html"
-url = url_search(tag)
-
-scr.get_html_file(url, path)
-html_info = scr.read_file(path)
-
-produtos = get_products(html_info)
-
-for item in produtos:
-	if item.available and (item.name).find(tag) != -1:
-		item.print_info()
