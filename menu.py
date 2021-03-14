@@ -15,6 +15,6 @@ class Menu:
 
          for item in produtos:
              if item.available and (item.name).find(tag) != -1:
-                 item.print_info();
+                 item.print_info()
         
 
