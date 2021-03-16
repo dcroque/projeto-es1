@@ -1,3 +1,5 @@
+import json
+
 class ShoppingCart:
 	def __init__(self):
 		self.items = []
@@ -49,8 +51,13 @@ class ShoppingCart:
 
 	def load_cart(self, filepath):
 		self.__reset()
-		#load json
-		#for each item add item
+		
+		f = open(filepath)
+		data = json.load(f)
+
+        	#for each item add item
+ 		for i in in data[items]:
+			add(i)
 
 	def save_cart(self, filepath):
 		#save json
