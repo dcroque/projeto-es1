@@ -27,9 +27,7 @@ def url_search(tags):
 def url_category(category):
 	layer = 0
 	url = "https://www.terabyteshop.com.br"
-	for cat in category:
-		url += "/"+cat
-		layer += 1
+	url += "/"+category
 	if check_page_exist(url):
 		return url
 	else:

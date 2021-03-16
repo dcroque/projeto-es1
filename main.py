@@ -1,4 +1,4 @@
 from menu import *
 
-menu = Menu()
+menu = UserInterface()
 menu.main_menu()

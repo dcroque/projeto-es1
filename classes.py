@@ -1,6 +1,45 @@
 class ShoppingCart:
 	def __init__(self):
-		self.products = []
+		self.items = []
+		self.promo_price = ''
+		self.single_price = ''
+		self.total_parcels_price = ''
+		self.parcel_price = ''
+		self.n_parcels = ''
+		self.in_promo = False				
+
+	def add_product(self, product, quantity):
+		product_name = product.name
+		for i in range(len(self.items)):
+			if products[i].get_product().name == product_name:
+				products[i].add_product(quantity)
+				self.__update_prices()
+				return
+		self.items.append(ShoppingCartItem(product, quantity))
+		self.__update_prices()
+
+	def add_item(self,item):
+		product_name = item.get_product().name
+		for i in range(len(self.items)):
+			if products[i].get_product().name == product_name:
+				products[i].add_product(item.get_quantity())
+				self.__update_prices()
+				return
+		self.items.append(item)
+		self.__update_prices()
+
+		
+	def remove_product(self, product_name, quantity):
+		for i in range(len(self.items)):
+			if self.items[i].get_product().name == product_name:
+				if quantity >= self.items[i].get_quantity():
+					self.items.pop(i)
+				else:
+					self.items[i].remove_product(quantity)
+		self.__update_prices()
+
+	def __reset(self):
+		self.items = []
 		self.promo_price = ''
 		self.single_price = ''
 		self.total_parcels_price = ''
@@ -8,27 +47,21 @@ class ShoppingCart:
 		self.n_parcels = ''
 		self.in_promo = False
 
-	def add_product(self, item, quantity):
-		product_name = item.name
-		for i in range(len(self.products)):
-			if products[i].get_product().name == product_name:
-				products[i].add_product(quantity)
-				self.__update_prices()
-				return
-		self.products.append(ShoppingCartItem(item, quantity))
-		self.__update_prices()
+	def load_cart(self, filepath):
+		self.__reset()
+		#load json
+		#for each item add item
+
+	def save_cart(self, filepath):
+		#save json
+		pass
 		
-	def remove_product(self, product_name, quantity):
-		for i in range(len(self.products)):
-			if self.products[i].get_product().name == product_name:
-				if quantity >= self.products[i].get_quantity():
-					self.products.pop(i)
-				else:
-					self.products[i].remove_product(quantity)
-		self.__update_prices()
+
+	def __price_to_float(self, strprice):
+		return float(strprice[3:].replace(',', '.'))
 
 	def __update_prices(self):
-		if len(self.products) > 0:
+		if len(self.items) > 0:
 			self.__update_promo_price()
 			self.__update_single_price()
 			self.__update_n_parcels()
@@ -37,28 +70,28 @@ class ShoppingCart:
 	
 	def __update_promo_price(self):
 		self.promo_price = 0
-		for item in self.products:
-			if item.product.in_promo:
-				self.promo_price += item.product.promo_price * item.quantity
+		for item in self.items:
+			if item.get_product().in_promo:
+				self.promo_price += self.__price_to_float(item.get_product().promo_price) * item.get_quantity()
 				self.in_promo = True
 			else:
-				self.promo_price += item.product.single_price * item.quantity
+				self.promo_price += self.__price_to_float(item.get_product().single_price) * item.get_quantity()
 
 	def __update_single_price(self):
 		self.single_price = 0
-		for item in self.products:
-			self.single_price += item.product.single_price * item.quantity
+		for item in self.items:
+			self.single_price += self.__price_to_float(item.get_product().single_price) * item.get_quantity()
 	
 	def __update_n_parcels(self):
-		self.n_parcels = self.products[0].n_parcels
-		for item in self.products:
-			if item.product.n_parcels < self.n_parcels:
-				self.n_parcels = item.product.n_parcels
+		self.n_parcels = int(self.items[0].get_product().n_parcels)
+		for item in self.items:
+			if int(item.get_product().n_parcels) < self.n_parcels:
+				self.n_parcels = int(item.get_product().n_parcels)
 
 	def __update_total_parcels_price(self):
 		self.total_parcels_price = 0
-		for item in self.products:
-			self.total_parcels_price += item.product.total_parcels_price * item.quantity
+		for item in self.items:
+			self.total_parcels_price += self.__price_to_float(item.get_product().total_parcels_price[3:]) * item.get_quantity()
 
 	def __update_parcels_price(self):
 		self.parcels_price = self.total_parcels_price/self.n_parcels
@@ -72,7 +105,7 @@ class ShoppingCartItem:
 		return self.__product
 
 	def get_quantity(self):
-		return self.__quantity
+		return int(self.__quantity)
 
 	def add_product(self, inc):
 		self.quantity += inc
@@ -96,13 +129,18 @@ class Product:
 			return
 
 		self.name = info[0]
-		self.promo_price = info[1]
-		self.single_price = info[2]
+		self.promo_price = info[1].replace(".","")
+		self.single_price = info[2].replace(".","")
 		self.total_parcels_price = info[3]
-		self.parcel_price = info[4]
+		self.parcel_price = info[4].replace(".","")
 		self.n_parcels = info[5]
 		self.available = info[6]
 		self.in_promo = info[7]
+
+		if self.in_promo:
+			temp = self.single_price
+			self.single_price = self.promo_price
+			self.promo_price = temp
 
 		self.__update_total_parcels_price()
 	
