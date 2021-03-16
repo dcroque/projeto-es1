@@ -11,8 +11,8 @@ class ShoppingCart:
 	def add_product(self, product, quantity):
 		product_name = product.name
 		for i in range(len(self.items)):
-			if products[i].get_product().name == product_name:
-				products[i].add_product(quantity)
+			if self.items[i].get_product().name == product_name:
+				self.items[i].inc_product(quantity)
 				self.__update_prices()
 				return
 		self.items.append(ShoppingCartItem(product, quantity))
@@ -21,8 +21,8 @@ class ShoppingCart:
 	def add_item(self,item):
 		product_name = item.get_product().name
 		for i in range(len(self.items)):
-			if products[i].get_product().name == product_name:
-				products[i].add_product(item.get_quantity())
+			if self.items[i].get_product().name == product_name:
+				self.items[i].inc_product(item.get_quantity())
 				self.__update_prices()
 				return
 		self.items.append(item)
@@ -107,10 +107,10 @@ class ShoppingCartItem:
 	def get_quantity(self):
 		return int(self.__quantity)
 
-	def add_product(self, inc):
+	def inc_product(self, inc):
 		self.quantity += inc
 
-	def remove_product(self, dec):
+	def dec_product(self, dec):
 		self.quantity -= dec
 
 class Product:
