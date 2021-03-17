@@ -47,7 +47,6 @@ class UserInterface:
 			opt = self.__menu_option_selection("MENU PRINCIPAL", main_options)
 			self.options[opt][1]()
 
-
 	def opt_exit(self):
 		exit()
 

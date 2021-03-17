@@ -9,8 +9,8 @@
 				"total_parcels_price": "R$ 499,92",
 				"parcel_price": "R$ 41,66",
 				"n_parcels": 12,
-				"available": 1,
-				"in_promo": 0
+				"available": "True",
+				"in_promo": "False"
 				
 			 }
 		 },
@@ -23,8 +23,8 @@
 			   "total_parcels_price": "R$ 320,64",
 			   "parcel_price": "R$ 26,72",
 			   "n_parcels": 12,
-			   "available": 1,
-			   "in_promo": 1
+			   "available": "True",
+			   "in_promo": "True"
 			   
 			}
 		}
