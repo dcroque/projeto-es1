@@ -1,7 +1,7 @@
 {
     "items": [
         {
-            "quantity": 2,
+            "quantity": 80,
             "product": {
                 "name": "Water cooler Corsair H45 120mm, Intel-AMD, CW-9060028-WW",
                 "promo_price": "R$ 434,91",
@@ -14,14 +14,14 @@
             }
         },
         {
-            "quantity": 1,
+            "quantity": 2,
             "product": {
                 "name": "SSD Patriot P200, 256GB, Sata III, Leitura 500MBs e Gravação 460MBs, P200S256G25C",
                 "promo_price": "R$ 279,00",
                 "single_price": "R$ 412,64",
-                "total_parcels_price": "R$ 320,64",
-                "parcel_price": "R$ 26,72",
-                "n_parcels": 12,
+                "total_parcels_price": "R$ 320,70",
+                "parcel_price": "R$ 32,07",
+                "n_parcels": 10,
                 "available": true,
                 "in_promo": true
             }

@@ -1,0 +1,43 @@
+{
+    "items": [
+        {
+            "quantity": 1,
+            "product": {
+                "name": "Fonte Gamdias, Kratos E1, 500W, ADD-RGB, GD-Z500ZZZ",
+                "promo_price": "R$ 459,00",
+                "single_price": "R$ 299,00",
+                "total_parcels_price": "R$ 343,68",
+                "parcel_price": "R$ 28,64",
+                "n_parcels": "12",
+                "available": true,
+                "in_promo": true
+            }
+        },
+        {
+            "quantity": 1,
+            "product": {
+                "name": "Processador AMD Ryzen 5 PRO 4650G 3.7GHz (4.2GHz Turbo), 6-Cores 12-Threads, AM4, Cooler Wraith Stealth, Com Vídeo Integrado, 100-100000143MPK",
+                "promo_price": "R$ 1699,00",
+                "single_price": "R$ 1699,00",
+                "total_parcels_price": "R$ 1952,88",
+                "parcel_price": "R$ 162,74",
+                "n_parcels": "12",
+                "available": true,
+                "in_promo": false
+            }
+        },
+        {
+            "quantity": 1,
+            "product": {
+                "name": "Placa Mãe ASRock B450M Steel Legend, Chipset B450, AMD AM4, mATX, DDR4",
+                "promo_price": "R$ 975,86",
+                "single_price": "R$ 759,00",
+                "total_parcels_price": "R$ 872,40",
+                "parcel_price": "R$ 72,70",
+                "n_parcels": "12",
+                "available": true,
+                "in_promo": true
+            }
+        }
+    ]
+}

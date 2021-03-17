@@ -11,9 +11,8 @@ class ShoppingCart:
         self.in_promo = False                
 
     def add_product(self, product, quantity):
-        product_name = product.name
         for i in range(len(self.items)):
-            if self.items[i].get_product().name == product_name:
+            if self.items[i].get_product().name == product:
                 self.items[i].inc_product(quantity)
                 self.__update_prices()
                 return
@@ -36,7 +35,7 @@ class ShoppingCart:
                 if quantity >= self.items[i].get_quantity():
                     self.items.pop(i)
                 else:
-                    self.items[i].remove_product(quantity)
+                    self.items[i].dec_product(quantity)
         self.__update_prices()
 
     def __reset(self):
@@ -57,7 +56,6 @@ class ShoppingCart:
             prd.set_all_by_json(element['product'])
             item = ShoppingCartItem(prd, int(element['quantity']))
             self.add_item(item)
-        self.save_cart("data/shoppingcarts/b.json")
 
     def save_cart(self, filepath):
         save_data = {'items': []}
@@ -104,11 +102,31 @@ class ShoppingCart:
     def __update_total_parcels_price(self):
         self.total_parcels_price = 0
         for item in self.items:
-            self.total_parcels_price += self.__price_to_float(item.get_product().total_parcels_price[3:]) * item.get_quantity()
+            self.total_parcels_price += self.__price_to_float(item.get_product().total_parcels_price) * item.get_quantity()
 
     def __update_parcels_price(self):
-        self.parcels_price = self.total_parcels_price/self.n_parcels
-    
+        self.parcel_price = self.total_parcels_price/self.n_parcels
+
+    def print_info(self, price_type):
+        price_map = {
+            "promo_price": "Preço promocional/À vista",
+            "single_price": "Preço à vista",
+            "total_parcels_price": "Preço total parcelado",
+            "parcel_price": "Preço das parcelas"
+        }
+
+        if price_type == "parcel_price":
+            parcels = f"{self.n_parcels}x"
+        else:
+            parcels = "1x"
+        total_price = str("{:.2f}".format(getattr(self, price_type))).replace('.', ',')
+
+        print("QTD   PREÇO\tPRODUTO")
+        for element in self.items:
+            el_price = "{:.2f}".format(self.__price_to_float(getattr(element.get_product(),price_type)) * (float(getattr(element.get_product(),'n_parcels')) / self.n_parcels))
+            print(f"{element.get_quantity()}x R$ {str(el_price).replace('.', ',')}\t{element.get_product().name}")
+        print(f"\n{price_map[price_type]}: \n{parcels} R$ {total_price}")
+
 class ShoppingCartItem:
     def __init__(self, product, quantity):
         self.__product = product
@@ -121,10 +139,10 @@ class ShoppingCartItem:
         return int(self.__quantity)
 
     def inc_product(self, inc):
-        self.quantity += inc
+        self.__quantity += inc
 
     def dec_product(self, dec):
-        self.quantity -= dec
+        self.__quantity -= dec
 
 class Product:
     def __init__(self):
@@ -150,11 +168,7 @@ class Product:
         self.available = info[6]
         self.in_promo = info[7]
 
-        if self.in_promo:
-            temp = self.single_price
-            self.single_price = self.promo_price
-            self.promo_price = temp
-        else:
+        if not self.in_promo:
             self.promo_price = self.single_price
 
         self.__update_total_parcels_price()
