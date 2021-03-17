@@ -1,0 +1,56 @@
+{
+    "items": [
+        {
+            "quantity": 1,
+            "product": {
+                "name": "Placa de Video Biostar, Radeon, Rx 550, 2GB, GDDR5, 128 Bit, VA5515RF21-TBMRA-BS2",
+                "promo_price": "R$ 499,00",
+                "single_price": "R$ 659,00",
+                "total_parcels_price": "R$ 573,60",
+                "parcel_price": "R$ 47,80",
+                "n_parcels": "12",
+                "available": true,
+                "in_promo": true
+            }
+        },
+        {
+            "quantity": 1,
+            "product": {
+                "name": "Processador AMD Ryzen 5 PRO 4650G 3.7GHz (4.2GHz Turbo), 6-Cores 12-Threads, AM4, Cooler Wraith Stealth, Com Vídeo Integrado, 100-100000143MPK",
+                "promo_price": "R$ 1699,00",
+                "single_price": "R$ 1699,00",
+                "total_parcels_price": "R$ 1952,88",
+                "parcel_price": "R$ 162,74",
+                "n_parcels": "12",
+                "available": true,
+                "in_promo": false
+            }
+        },
+        {
+            "quantity": 1,
+            "product": {
+                "name": "SSD Hikvision C100, 480GB, Sata III, Leitura 550MBs e Gravação 470MBs, HS-SSD-C100/480G",
+                "promo_price": "R$ 439,00",
+                "single_price": "R$ 439,00",
+                "total_parcels_price": "R$ 504,60",
+                "parcel_price": "R$ 42,05",
+                "n_parcels": "12",
+                "available": true,
+                "in_promo": false
+            }
+        },
+        {
+            "quantity": 1,
+            "product": {
+                "name": "Fonte SuperFrame, 700W, 80 Plus Bronze, PFC Ativo, Cabos Flat, SF-B700FL",
+                "promo_price": "R$ 474,15",
+                "single_price": "R$ 474,15",
+                "total_parcels_price": "R$ 545,04",
+                "parcel_price": "R$ 45,42",
+                "n_parcels": "12",
+                "available": true,
+                "in_promo": false
+            }
+        }
+    ]
+}

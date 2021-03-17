@@ -254,11 +254,11 @@ class UserInterface:
                     "Preço à vista",
                     "Preço total parcelado",
                     "Preço das parcelas",
-                    "Sair"
+                    "Cancelar"
                 ]
 
-                opt_visual = self.__menu_option_selection("Alterações não salvas serão perdidas", options_visual_pretty)
-                if opt_visual == len(options)-1:
+                opt_visual = self.__menu_option_selection("Que preços deseja checar para este carrinho?", options_visual_pretty)
+                if opt_visual == len(options_visual_pretty)-1:
                     pass
                 else:
                     shcart.print_info(options_visual_keys[opt_visual])
