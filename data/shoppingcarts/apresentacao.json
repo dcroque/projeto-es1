@@ -40,26 +40,13 @@
             }
         },
         {
-            "quantity": 2,
+            "quantity": 1,
             "product": {
                 "name": "Fonte SuperFrame, 700W, 80 Plus Bronze, PFC Ativo, Cabos Flat, SF-B700FL",
                 "promo_price": "R$ 474,15",
                 "single_price": "R$ 474,15",
                 "total_parcels_price": "R$ 545,04",
                 "parcel_price": "R$ 45,42",
-                "n_parcels": "12",
-                "available": true,
-                "in_promo": false
-            }
-        },
-        {
-            "quantity": 2,
-            "product": {
-                "name": "Memória DDR4 Geil Orion, 16GB 3000MHz, Red, GAOR416GB3000C16ASC",
-                "promo_price": "R$ 549,90",
-                "single_price": "R$ 549,90",
-                "total_parcels_price": "R$ 632,04",
-                "parcel_price": "R$ 52,67",
                 "n_parcels": "12",
                 "available": true,
                 "in_promo": false
